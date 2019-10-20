@@ -9,6 +9,8 @@ public class CharacterSelection : MonoBehaviour
 {
     private int selectedCharIndex;
     private Color desiredColor;
+    public CharSelectionObject selectedChar;
+    public DataManager dataManager;
 
     [Header("List of Characters")]
     [SerializeField] private List<CharSelectionObject> charList = new List<CharSelectionObject>();
@@ -24,6 +26,15 @@ public class CharacterSelection : MonoBehaviour
 
     [Header("Tweaks")]
     [SerializeField] private float backgroundColorTransitionSpeed = 10.0f;
+
+    public void Awake()
+    {
+        dataManager = GameObject.Find("DataManager").GetComponent<DataManager>();
+        if (dataManager != null)
+        {
+            Debug.Log("Data Manager accessed");
+        }
+    }
 
     private void Start()
     {
@@ -59,6 +70,10 @@ public class CharacterSelection : MonoBehaviour
 
     public void Confirm()
     {
+        selectedChar = charList[selectedCharIndex];
+        Debug.Log("Selected ship: " + selectedChar.charName);
+        dataManager.charSprite = selectedChar.sprite;
+        dataManager.charName = selectedChar.charName;
         SceneManager.LoadScene("Game");
     }
 
