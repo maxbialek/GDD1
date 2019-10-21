@@ -9,7 +9,6 @@ public class CharacterSelection : MonoBehaviour
 {
     private int selectedCharIndex;
     private Color desiredColor;
-    public CharSelectionObject selectedChar;
     public DataManager dataManager;
 
     [Header("List of Characters")]
@@ -70,7 +69,7 @@ public class CharacterSelection : MonoBehaviour
 
     public void Confirm()
     {
-        selectedChar = charList[selectedCharIndex];
+        CharSelectionObject selectedChar = charList[selectedCharIndex];
         Debug.Log("Selected ship: " + selectedChar.charName);
         dataManager.charSprite = selectedChar.sprite;
         dataManager.charName = selectedChar.charName;

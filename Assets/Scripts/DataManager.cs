@@ -8,9 +8,6 @@ public class DataManager : MonoBehaviour
 
     public Sprite charSprite;
     public string charName;
-    public int score;
-    public int health;
-    public int lives;
 
     public void Awake()
     {
@@ -22,8 +19,6 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        health = 1;
 
         DontDestroyOnLoad(gameObject);
     }
