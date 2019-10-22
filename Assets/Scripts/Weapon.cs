@@ -29,6 +29,6 @@ public class Weapon : MonoBehaviour
         var shotTransform = Instantiate(bulletPrefab) as Transform;
         shotTransform.position = transform.position;
         Move move = shotTransform.gameObject.GetComponent<Move>();
-        move.direction = this.transform.right;
+        move.direction = new Vector2(1, Random.Range(-0.05f, 0.05f));
     }
 }
