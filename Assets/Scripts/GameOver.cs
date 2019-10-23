@@ -7,11 +7,8 @@ public class GameOver : MonoBehaviour
 {
     public Player player;
 
-    void Update()
+    public void GameOverTransition()
     {
-        if (player == null)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        SceneManager.LoadScene("GameOver");
     }
 }

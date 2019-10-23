@@ -588,19 +588,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc81ddcfbf4a5440ae0c3dd685936a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
   charList:
   - sprite: {fileID: 21300000, guid: 5e625c445be102f4ebd3538880da5d11, type: 3}
-    charName: SHIP ONE
-    charColor: {r: 0.8958345, g: 1, b: 0.0141509175, a: 1}
+    charName: hei
+    charColor: {r: 1, g: 0.9561808, b: 0, a: 1}
+    speed: 7
   - sprite: {fileID: 21300000, guid: 99017abddbf3f9a4cad04b29956ed51a, type: 3}
-    charName: SHIP TWO
-    charColor: {r: 0.3443396, g: 0.3443396, b: 1, a: 1}
+    charName: ho
+    charColor: {r: 0.72207546, g: 0, b: 1, a: 1}
+    speed: 12
   charName: {fileID: 868999139}
   charSplash: {fileID: 1686517768}
   backgroundColor: {fileID: 1536765629}
   arrowClickSound: {fileID: 0}
   charSelectSound: {fileID: 0}
-  backgroundColorTransitionSpeed: 10
+  backgroundColorTransitionSpeed: 7
 --- !u!4 &764040542
 Transform:
   m_ObjectHideFlags: 0
@@ -808,8 +811,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1300,7 +1303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7555099, g: 1, b: 0.7311321, a: 1}
+  m_Color: {r: 0.6951027, g: 0.8867924, b: 0.6734603, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

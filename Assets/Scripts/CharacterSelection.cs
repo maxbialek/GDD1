@@ -11,6 +11,8 @@ public class CharacterSelection : MonoBehaviour
     private Color desiredColor;
     public DataManager dataManager;
 
+    public CharSelectionObject selectedObject;
+
     [Header("List of Characters")]
     [SerializeField] private List<CharSelectionObject> charList = new List<CharSelectionObject>();
 
@@ -69,10 +71,8 @@ public class CharacterSelection : MonoBehaviour
 
     public void Confirm()
     {
-        CharSelectionObject selectedChar = charList[selectedCharIndex];
-        Debug.Log("Selected ship: " + selectedChar.charName);
-        dataManager.charSprite = selectedChar.sprite;
-        dataManager.charName = selectedChar.charName;
+        selectedObject = charList[selectedCharIndex];
+        dataManager.selectedObject = selectedObject;
         SceneManager.LoadScene("Game");
     }
 
@@ -89,5 +89,6 @@ public class CharacterSelection : MonoBehaviour
         public Sprite sprite;
         public string charName;
         public Color charColor;
+        public float speed;
     }
 }

@@ -10,11 +10,7 @@ tanky ones
 
 
 todo:
--win/lose condition: highscore, boss
--ship selection: different stats, movement, weapon (machine gun, shotgun, 
-boomerang etc.)
--quit button in menu
--pause option with quit
+-ship selection: weapon (machine gun, shotgun, boomerang etc.)
 -settings: simple sound setting
 -sound
 -visuals, sprites, animations
