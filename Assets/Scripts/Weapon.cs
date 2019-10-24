@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
         shootCooldown = shootingRate;
         var shotTransform = Instantiate(bulletPrefab) as Transform;
         shotTransform.position = transform.position;
-        Move move = shotTransform.gameObject.GetComponent<Move>();
+        MoveBullet move = shotTransform.gameObject.GetComponent<MoveBullet>();
         move.direction = new Vector2(1, Random.Range(-0.05f, 0.05f));
     }
 }

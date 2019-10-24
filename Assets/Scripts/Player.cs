@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
         if(shoot)
         {
-            Weapon weapon = GetComponent<Weapon>();
+            Weapon weapon = GetComponentInChildren<Weapon>();
             weapon.Shoot();
         }
     }

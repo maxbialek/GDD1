@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3151066160972755065}
   - component: {fileID: 4644676114407601114}
   - component: {fileID: 2907861427866638152}
-  - component: {fileID: 2017620392636913082}
   - component: {fileID: 733946917142217870}
+  - component: {fileID: -7055208044880333354}
   m_Layer: 0
-  m_Name: Alien1 1
+  m_Name: Alien1
   m_TagString: Alien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6554492315230471381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.2004085, y: 1.2558349, z: 0}
+  m_LocalPosition: {x: 6.2004085, y: 1.2558349, z: -9}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -131,23 +131,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2017620392636913082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6554492315230471381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7df1acbfc9804a4cb07420282d61d6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  direction: {x: -1, y: 0}
-  movement: {x: 0, y: 0}
-  isEnemy: 0
-  movementType: 0
 --- !u!114 &733946917142217870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,4 +144,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  player: {fileID: 0}
+--- !u!114 &-7055208044880333354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6554492315230471381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933aa46bcdf9c594dab0023db6347c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  direction: {x: -1, y: 0}
+  movement: {x: 0, y: 0}
+  sinusMovement: 0
+  frequency: 0
+  magnitude: 0
