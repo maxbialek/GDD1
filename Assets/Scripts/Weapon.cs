@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -8,27 +10,67 @@ public class Weapon : MonoBehaviour
     public Transform bulletPrefab;
     public float shootingRate = 0.25f;
     private float shootCooldown;
-    // Start is called before the first frame update
+    public int ammunitionMax = 30;
+    public int ammunitionCurrent;
+    public float reloadTime = 1f;
+    private float reloadCooldown;
+
+    public TextMeshProUGUI ammoCurrent;
+    public RectTransform reloadBar;
+    public GameObject reloadBarObject;
+    public Image reloadFillBar;
+
     void Start()
     {
         shootCooldown = 0f;
+        reloadCooldown = 0f;
+        ammunitionCurrent = ammunitionMax;
+        UpdateAmmoCurrent();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(shootCooldown > 0)
+        if (shootCooldown > 0)
         {
             shootCooldown -= Time.deltaTime;
         }
+        if (reloadCooldown > 0)
+        {
+            reloadFillBar.fillAmount = 1f - reloadCooldown / reloadTime;
+            reloadBarObject.SetActive(true);
+            reloadCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            reloadBarObject.SetActive(false);
+            UpdateAmmoCurrent();
+        }
+
+        Vector3 barPos = Camera.main.WorldToScreenPoint(transform.position);
+        reloadBar.transform.position = new Vector3(barPos.x, barPos.y - 37f, barPos.z);
     }
 
     public void Shoot()
     {
-        shootCooldown = shootingRate;
-        var shotTransform = Instantiate(bulletPrefab) as Transform;
-        shotTransform.position = transform.position;
-        MoveBullet move = shotTransform.gameObject.GetComponent<MoveBullet>();
-        move.direction = new Vector2(1, Random.Range(-0.05f, 0.05f));
+        if (shootCooldown <= 0 && reloadCooldown <= 0)
+        {
+            ammunitionCurrent--;
+            UpdateAmmoCurrent();
+            if (ammunitionCurrent == 0)
+            {
+                reloadCooldown = reloadTime;
+                ammunitionCurrent = ammunitionMax;
+            }
+            shootCooldown = shootingRate;
+            var shotTransform = Instantiate(bulletPrefab) as Transform;
+            shotTransform.position = transform.position;
+            MoveBullet move = shotTransform.gameObject.GetComponent<MoveBullet>();
+            move.direction = new Vector2(1, Random.Range(-0.05f, 0.05f));
+        }
+    }
+
+    public void UpdateAmmoCurrent()
+    {
+        ammoCurrent.text = "Ammo: " + ammunitionCurrent.ToString("D2") + "/" + ammunitionMax;
     }
 }

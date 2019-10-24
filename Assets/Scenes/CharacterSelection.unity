@@ -589,12 +589,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataManager: {fileID: 0}
+  selectedObject:
+    sprite: {fileID: 0}
+    charName: 
+    charColor: {r: 0, g: 0, b: 0, a: 0}
+    speed: 0
   charList:
   - sprite: {fileID: 21300000, guid: 5e625c445be102f4ebd3538880da5d11, type: 3}
     charName: hei
     charColor: {r: 1, g: 0.9561808, b: 0, a: 1}
     speed: 7
-  - sprite: {fileID: 21300000, guid: 99017abddbf3f9a4cad04b29956ed51a, type: 3}
+  - sprite: {fileID: 21300000, guid: 151a20262d844f048acfc4c2865e5bc7, type: 3}
     charName: ho
     charColor: {r: 0.72207546, g: 0, b: 1, a: 1}
     speed: 12

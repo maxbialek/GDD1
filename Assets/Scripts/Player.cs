@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     public RectTransform hud;
     public Canvas canvas;
     private float panelHeight;
-    //private float panelWidth;
+
+    public GameObject WeaponObject;
 
     public void Awake()
     {
@@ -32,6 +33,16 @@ public class Player : MonoBehaviour
             dataManager = go.GetComponent<DataManager>();
             Debug.Log("Data Manager found in Player");
         }
+    }
+
+    public float GetObjectHeight()
+    {
+        return objectHeight;
+    }
+
+    public float GetObjectWidth()
+    {
+        return objectWidth;
     }
 
     void Start()
@@ -57,6 +68,7 @@ public class Player : MonoBehaviour
         panelHeight = screenBounds.y * hud.rect.size.y / canvas.pixelRect.size.y;
         dataManager.SetPanelHeightBottom(panelHeight);
         dataManager.ActivateAlienSpawner();
+        WeaponObject.SetActive(true);
     }
 
     void Update()
@@ -67,10 +79,8 @@ public class Player : MonoBehaviour
         movement = new Vector2(moveHorizontal, moveVertical);
         movement *= speed;
 
-        bool shoot = Input.GetButtonDown("Fire1");
-        shoot |= Input.GetButtonDown("Fire2");
-
-        if(shoot)
+        bool shoot2 = Input.GetButton("Fire1");
+        if(shoot2)
         {
             Weapon weapon = GetComponentInChildren<Weapon>();
             weapon.Shoot();
