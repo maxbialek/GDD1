@@ -7,6 +7,7 @@ using TMPro;
 public class GameOverScreen : MonoBehaviour
 {
     public TextMeshProUGUI finalScore;
+    public TextMeshProUGUI highScore;
     private DataManager dataManager;
 
     public void Awake()
@@ -21,8 +22,8 @@ public class GameOverScreen : MonoBehaviour
 
     private void Start()
     {
-        finalScore.faceColor = new Color32(255, 255, 255, 255);
         finalScore.text = "Score: " + dataManager.score;
+        highScore.text = "Highscore: " + dataManager.maxScore;
     }
 
     public void PlayAgain()

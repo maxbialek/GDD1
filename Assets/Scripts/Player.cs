@@ -64,10 +64,13 @@ public class Player : MonoBehaviour
         dataManager.score = 0;
         scoreText.faceColor = new Color32(0, 0, 0, 255);
 
-        //panelWidth = screenBounds.x * hud.rect.size.x / canvas.pixelRect.size.x;
         panelHeight = screenBounds.y * hud.rect.size.y / canvas.pixelRect.size.y;
         dataManager.SetPanelHeightBottom(panelHeight);
         dataManager.ActivateAlienSpawner();
+        Weapon weaponStats = WeaponObject.GetComponent<Weapon>();
+        weaponStats.shootCooldown = dataManager.selectedObject.attackRate;
+        weaponStats.ammunitionMax = dataManager.selectedObject.ammunition;
+        weaponStats.reloadTime = dataManager.selectedObject.reloadTime;
         WeaponObject.SetActive(true);
     }
 
@@ -76,15 +79,20 @@ public class Player : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
+
         movement = new Vector2(moveHorizontal, moveVertical);
         movement *= speed;
 
+        Weapon weapon = GetComponentInChildren<Weapon>();
         bool shoot2 = Input.GetButton("Fire1");
-        if(shoot2)
-        {
-            Weapon weapon = GetComponentInChildren<Weapon>();
+        if (shoot2)
             weapon.Shoot();
-        }
+
+        bool reload = Input.GetKeyDown(KeyCode.R);
+        bool isReloading = weapon.IsReloading();
+        if (reload && !isReloading)
+            weapon.ReloadWeapon();
+
     }
 
     private void FixedUpdate()

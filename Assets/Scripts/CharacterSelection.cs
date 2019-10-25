@@ -20,6 +20,11 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI charName;
     [SerializeField] private Image charSplash;
     [SerializeField] private Image backgroundColor;
+    [SerializeField] private TextMeshProUGUI speedText;
+    [SerializeField] private TextMeshProUGUI attackRateText;
+    [SerializeField] private TextMeshProUGUI ammunitionText;
+    [SerializeField] private TextMeshProUGUI reloadTimeText;
+
 
     [Header("Sounds")]
     [SerializeField] private AudioClip arrowClickSound;
@@ -76,11 +81,21 @@ public class CharacterSelection : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    public void Back()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     private void UpdateCharSelectionUI()
     {
-        charSplash.sprite = charList[selectedCharIndex].sprite;
-        charName.text = charList[selectedCharIndex].charName;
-        desiredColor = charList[selectedCharIndex].charColor;
+        CharSelectionObject obj = charList[selectedCharIndex];
+        charSplash.sprite = obj.sprite;
+        charName.text = obj.charName;
+        desiredColor = obj.charColor;
+        speedText.text = "Speed: " + obj.speed;
+        attackRateText.text = "Attack Rate: " + obj.attackRate;
+        ammunitionText.text = "Ammunition: " + obj.ammunition;
+        reloadTimeText.text = "Reload Time: " + obj.reloadTime + "sec.";
     }
 
     [System.Serializable]
@@ -90,5 +105,8 @@ public class CharacterSelection : MonoBehaviour
         public string charName;
         public Color charColor;
         public float speed;
+        public float attackRate;
+        public int ammunition;
+        public float reloadTime;
     }
 }

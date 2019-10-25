@@ -10,6 +10,7 @@ public class DataManager : MonoBehaviour
 
     private Player player;
     public int score = 0;
+    public int maxScore = 0;
 
     private float panelHeightBottom;
 
@@ -42,6 +43,8 @@ public class DataManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (score > maxScore)
+            maxScore = score;
         GameOver gameOver = GameObject.Find("GameController").GetComponent<GameOver>();
         gameOver.GameOverTransition();
     }
